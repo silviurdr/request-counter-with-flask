@@ -1,0 +1,20 @@
+<table border="1">
+    <thead>
+        <tr>
+            {% for header in TABLE_HEADERS %}
+            <th>
+                {{header}}
+            </th>
+            {% endfor %}
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for stat in all_stats %}
+        <tr>
+            <td>{{stat[:-1]}}</td>
+            <td>{{stat[-1]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
