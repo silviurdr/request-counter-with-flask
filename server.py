@@ -27,31 +27,16 @@ def counter():
         "DELETE": int(all_stats[DELETE][-1])
     }
 
-    if request.method == "POST":
+    if request.method == "GET":
+        counters['GET'] += 1
+    elif request.method == "POST":
         counters['POST'] += 1
-
-        dmg.write_stats_to_file(counters)
-
-        return render_template("request-counter.html")
-
     elif request.method == "DELETE":
         counters['DELETE'] += 1
-
-        dmg.write_stats_to_file(counters)
-
-        return render_template("request-counter.html")
-
     elif request.method == "PUT":
         counters['PUT'] += 1
 
-        dmg.write_stats_to_file(counters)
-
-        return render_template("request-counter.html")
-
-    counters["GET"] += 1
-
     dmg.write_stats_to_file(counters)
-
     return render_template("request-counter.html")
 
 
